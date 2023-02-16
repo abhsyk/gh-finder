@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { User } from '../../../interfaces/User';
+import { Spinner } from '../../ui';
 
 const UserList: FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -20,7 +21,7 @@ const UserList: FC = () => {
     fetchUsers();
   }, []);
 
-  if (loading) return <h3>Loading...</h3>;
+  if (loading) return <Spinner />;
 
   return (
     <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
