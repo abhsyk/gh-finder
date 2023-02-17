@@ -1,9 +1,3 @@
-import { User } from '../../interfaces/User';
-import { ActionType } from '../actionTypes';
+import { GithubsAction } from './githubsActions';
 
-export interface FetchUsersAction {
-  type: ActionType.FETCH_USERS;
-  payload: User[];
-}
-
-export type GithubsAction = FetchUsersAction;
+export type Action = GithubsAction;

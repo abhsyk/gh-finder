@@ -1,13 +1,15 @@
 import { User } from '../../interfaces/User';
-import { GithubsAction } from '../actions';
+import { GithubsAction } from '../actions/githubsActions';
 import { ActionType } from '../actionTypes';
 
 interface GithubsState {
   users: User[];
+  loading: boolean;
 }
 
 const initialState: GithubsState = {
   users: [],
+  loading: false,
 };
 
 const reducer = (state: GithubsState = initialState, action: GithubsAction) => {
