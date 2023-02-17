@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FC } from 'react';
-import { UserList } from '../../components/users';
+import { UsersList } from '../../components/users';
 
 const Home: FC = () => {
   return (
@@ -15,7 +15,7 @@ const Home: FC = () => {
           Home
         </motion.h1>
       </div>
-      <UserList />
+      <UsersList />
     </div>
   );
 };
