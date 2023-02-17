@@ -1,22 +1,12 @@
-import { FC, useCallback, useEffect, useState } from 'react';
-import { User } from '../../../interfaces/User';
+import { FC, useEffect } from 'react';
+import { useAction } from '../../../hooks/useAction';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { Spinner } from '../../ui';
 import UserItem from '../UserItem';
 
 const UserList: FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  const fetchUsers = useCallback(async () => {
-    setLoading(true);
-    const res = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users`, {
-      headers: { Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}` },
-    });
-    const data: User[] = await res.json();
-
-    setUsers(data);
-    setLoading(false);
-  }, []);
+  const { fetchUsers } = useAction();
+  const { users, loading } = useTypedSelector((state) => state.githubs);
 
   useEffect(() => {
     fetchUsers();
@@ -26,9 +16,7 @@ const UserList: FC = () => {
 
   return (
     <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
-      {users.map((user) => (
-        <UserItem key={user.id} user={user} />
-      ))}
+      {users && users.map((user) => <UserItem key={user.id} user={user} />)}
     </div>
   );
 };

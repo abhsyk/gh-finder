@@ -15,7 +15,13 @@ const initialState: GithubsState = {
 const reducer = (state: GithubsState = initialState, action: GithubsAction) => {
   switch (action.type) {
     case ActionType.FETCH_USERS:
-      return { ...state, users: action.payload };
+      return { ...state, loading: true };
+    case ActionType.FETCH_USERS_COMPLETE:
+      return {
+        ...state,
+        users: action.payload,
+        loading: false,
+      };
     default:
       return state;
   }

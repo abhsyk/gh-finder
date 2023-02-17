@@ -4,6 +4,7 @@ import { GithubsAction } from '../actions/githubsActions';
 import { ActionType } from '../actionTypes';
 
 export const fetchUsers = () => async (dispatch: Dispatch<GithubsAction>) => {
+  dispatch({ type: ActionType.FETCH_USERS });
   try {
     const { data } = await axios.get(
       `${process.env.REACT_APP_GITHUB_URL}/users`,
@@ -13,6 +14,7 @@ export const fetchUsers = () => async (dispatch: Dispatch<GithubsAction>) => {
         },
       }
     );
-    dispatch({ type: ActionType.FETCH_USERS, payload: data });
+
+    dispatch({ type: ActionType.FETCH_USERS_COMPLETE, payload: data });
   } catch (err) {}
 };

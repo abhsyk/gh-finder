@@ -12,7 +12,7 @@ const UserItem: FC<Props> = ({ user: { login, avatar_url } }) => {
       <div className="flex flex-row items-center">
         <div className=""></div>
         <div className="rounded-full shadow w-14 h-14 overflow-hidden">
-          <img src={avatar_url} alt="Profile image" />
+          <img src={avatar_url} alt="Profile" />
         </div>
       </div>
       <div className="ml-3">
