@@ -22,6 +22,8 @@ const reducer = (state: GithubsState = initialState, action: GithubsAction) => {
         users: action.payload,
         loading: false,
       };
+    case ActionType.CLEAR_USERS:
+      return { ...state, users: [] };
     default:
       return state;
   }

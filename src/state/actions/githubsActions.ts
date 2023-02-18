@@ -10,4 +10,11 @@ export interface FetchUsersCompleteAction {
   payload: User[];
 }
 
-export type GithubsAction = FetchUsersAction | FetchUsersCompleteAction;
+export interface ClearUsersAction {
+  type: ActionType.CLEAR_USERS;
+}
+
+export type GithubsAction =
+  | FetchUsersAction
+  | FetchUsersCompleteAction
+  | ClearUsersAction;

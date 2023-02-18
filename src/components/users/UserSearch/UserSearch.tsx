@@ -1,12 +1,17 @@
 import { FC, FormEvent, useState } from 'react';
+import { useAction } from '../../../hooks/useAction';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 const UserSearch: FC = () => {
   const [text, setText] = useState('');
+  const { searchUsers, clearUsers } = useAction();
   const { users } = useTypedSelector((state) => state.githubs);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (text.trim().length > 0) {
+      searchUsers(text);
+    }
   };
 
   return (
@@ -19,7 +24,7 @@ const UserSearch: FC = () => {
                 type="text"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                className="w-full pr-40 bg-gray-200 text-black p-4 rounded-lg"
+                className="w-full pr-40 bg-gray-200 text-black p-4 rounded-lg outline-none"
                 placeholder="Search"
               />
               <button
@@ -32,9 +37,11 @@ const UserSearch: FC = () => {
           </div>
         </form>
       </div>
-      {users && (
+      {users.length > 0 && (
         <div className="flex">
-          <button>CLEAR</button>
+          <button onClick={clearUsers} disabled={!text.length}>
+            CLEAR
+          </button>
         </div>
       )}
     </div>

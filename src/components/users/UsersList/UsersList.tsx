@@ -5,12 +5,12 @@ import { Spinner } from '../../ui';
 import UserItem from '../UserItem';
 
 const UserList: FC = () => {
-  const { fetchUsers } = useAction();
+  // const { fetchUsers } = useAction();
   const { users, loading } = useTypedSelector((state) => state.githubs);
 
-  useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, [fetchUsers]);
 
   if (loading) return <Spinner />;
 
