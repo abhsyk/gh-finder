@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar: FC = () => {
   return (
-    <nav className="flex items-center bg-slate-800 h-20 shadow-lg min-h-1">
+    <nav className="flex items-center bg-slate-800 h-20 shadow-lg min-h-full">
       <div className="flex items-center container mx-auto">
         <div className="flex-none px-2 mx-2 text-white">
           <FaGithub className="inline pr-2 text-3xl" />
