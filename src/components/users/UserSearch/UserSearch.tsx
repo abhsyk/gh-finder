@@ -4,12 +4,17 @@ import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 const UserSearch: FC = () => {
   const [text, setText] = useState('');
-  const { searchUsers, clearUsers } = useAction();
+  const { searchUsers, clearUsers, setAlert } = useAction();
   const { users } = useTypedSelector((state) => state.githubs);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (text.trim().length > 0) {
+
+    console.log(text.trim());
+
+    if (text.trim().length <= 0) {
+      return setAlert('Please enter something.', 'error');
+    } else {
       searchUsers(text);
     }
   };

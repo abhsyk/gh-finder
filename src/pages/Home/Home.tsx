@@ -5,7 +5,7 @@ import { UserSearch, UsersList } from '../../components/users';
 const Home: FC = () => {
   return (
     <div>
-      <div className="overflow-hidden py-8">
+      {/* <div className="overflow-hidden py-8">
         <motion.h1
           variants={titleAnim}
           initial="hidden"
@@ -14,7 +14,7 @@ const Home: FC = () => {
         >
           Home
         </motion.h1>
-      </div>
+      </div> */}
       <UserSearch />
       <UsersList />
     </div>

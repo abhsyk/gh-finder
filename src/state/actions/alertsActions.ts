@@ -2,7 +2,7 @@ import { ActionType } from '../actionTypes';
 
 export interface SetAlertAction {
   type: ActionType.SET_ALERT;
-  payload: { message: string; type: string };
+  payload: { message: string; type: 'error' };
 }
 
 export interface RemoveAlertAction {
