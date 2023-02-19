@@ -14,10 +14,14 @@ const UserDetail: FC = () => {
   }, [params.id]);
 
   return (
-    <div>
-      UserDetail
-      <h1>{user.login}</h1>
-    </div>
+    <>
+      {user && (
+        <div>
+          UserDetail
+          <h1>{user.login}</h1>
+        </div>
+      )}
+    </>
   );
 };
 

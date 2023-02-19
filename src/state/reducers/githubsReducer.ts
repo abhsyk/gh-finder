@@ -4,13 +4,13 @@ import { ActionType } from '../actionTypes';
 
 interface GithubsState {
   users: User[];
-  user: User;
+  user: User | null;
   loading: boolean;
 }
 
 const initialState: GithubsState = {
   users: [],
-  user: {} as User,
+  user: null,
   loading: false,
 };
 
@@ -28,6 +28,8 @@ const reducer = (state: GithubsState = initialState, action: GithubsAction) => {
       return { ...state, users: [] };
     case ActionType.GET_ONE_USER_COMPLETE:
       return { ...state, user: action.payload, loading: false };
+    case ActionType.CLEAR_ONE_USER:
+      return { ...state, user: null };
     default:
       return state;
   }

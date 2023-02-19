@@ -30,6 +30,7 @@ export const searchUsers =
 
 export const getOneUser =
   (login: string) => async (dispatch: Dispatch<GithubsAction>) => {
+    dispatch({ type: ActionType.CLEAR_ONE_USER });
     dispatch({ type: ActionType.FETCH_USERS });
 
     try {
