@@ -17,7 +17,7 @@ const UserItem: FC<Props> = ({ user: { login, avatar_url } }) => {
       </div>
       <div className="ml-3">
         <h2 className="font-bold">{login}</h2>
-        <Link to={`/users/${login}`} className="text-slate-300 text-sm">
+        <Link to={`/user/${login}`} className="text-slate-300 text-sm">
           Visit Profile
         </Link>
       </div>

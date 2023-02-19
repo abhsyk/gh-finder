@@ -10,11 +10,23 @@ export interface FetchUsersCompleteAction {
   payload: User[];
 }
 
+export interface FetchUsersErrorAction {
+  type: ActionType.FETCH_USERS_ERROR;
+  payload: string;
+}
+
 export interface ClearUsersAction {
   type: ActionType.CLEAR_USERS;
+}
+
+export interface GetOneUserCompleteAction {
+  type: ActionType.GET_ONE_USER_COMPLETE;
+  payload: User;
 }
 
 export type GithubsAction =
   | FetchUsersAction
   | FetchUsersCompleteAction
-  | ClearUsersAction;
+  | FetchUsersErrorAction
+  | ClearUsersAction
+  | GetOneUserCompleteAction;

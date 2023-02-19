@@ -10,8 +10,6 @@ const UserSearch: FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    console.log(text.trim());
-
     if (text.trim().length <= 0) {
       return setAlert('Please enter something.', 'error');
     } else {

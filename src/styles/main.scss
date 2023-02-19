@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 @import './spinner';
+
+main {
+  min-height: calc(100vh - 184px);
+}
