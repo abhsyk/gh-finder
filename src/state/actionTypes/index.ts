@@ -3,4 +3,7 @@ export enum ActionType {
   FETCH_USERS_COMPLETE = 'fetch_users_complete',
   FETCH_USERS_ERROR = 'fetch_users_error',
   CLEAR_USERS = 'clear_users',
+  // Alert
+  SET_ALERT = 'set_alert',
+  REMOVE_ALERT = 'remove_alert',
 }
