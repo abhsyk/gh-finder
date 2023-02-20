@@ -19,19 +19,8 @@ export interface ClearUsersAction {
   type: ActionType.CLEAR_USERS;
 }
 
-export interface GetOneUserCompleteAction {
-  type: ActionType.GET_ONE_USER_COMPLETE;
-  payload: User;
-}
-
-export interface ClearOneUserAction {
-  type: ActionType.CLEAR_ONE_USER;
-}
-
 export type GithubsAction =
   | FetchUsersAction
   | FetchUsersCompleteAction
   | FetchUsersErrorAction
-  | ClearUsersAction
-  | GetOneUserCompleteAction
-  | ClearOneUserAction;
+  | ClearUsersAction;

@@ -8,16 +8,16 @@ import { Spinner } from '../../components/ui';
 
 const UserDetail: FC = () => {
   const params = useParams<{ id: string }>();
-  const { getOneUser } = useAction();
-  const { user, loading } = useTypedSelector((state) => state.githubs);
+  const { getSingleUser } = useAction();
+  const { user } = useTypedSelector((state) => state.userDetails);
 
   console.log(user);
 
   useEffect(() => {
-    getOneUser(params.id!);
+    getSingleUser(params.id!);
   }, [params.id]);
 
-  if (loading) return <Spinner />;
+  // if (loading) return <Spinner />;
 
   return (
     <>
