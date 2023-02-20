@@ -2,12 +2,12 @@ import axios from 'axios';
 import { Dispatch } from '@reduxjs/toolkit';
 import { ActionType } from '../actionTypes';
 import { User } from '../../interfaces/User';
-import { UserDetailAction } from '../actions/userDetailActions';
+import { Action } from '../actions';
 
 export const getSingleUser =
-  (login: string) => async (dispatch: Dispatch<UserDetailAction>) => {
+  (login: string) => async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.CLEAR_ONE_USER });
-    // dispatch({ type: ActionType.FETCH_USERS });
+    dispatch({ type: ActionType.FETCH_START });
 
     try {
       const { data } = await axios.get<User>(
@@ -20,9 +20,10 @@ export const getSingleUser =
       );
 
       dispatch({ type: ActionType.GET_SINGLE_USER, payload: data });
+      dispatch({ type: ActionType.FETCH_END });
     } catch (err: any) {
       console.log(err);
 
-      // dispatch({ type: ActionType.FETCH_USERS_ERROR, payload: err.message });
+      dispatch({ type: ActionType.FETCH_ERROR, payload: err.message });
     }
   };

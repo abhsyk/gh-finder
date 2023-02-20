@@ -9,7 +9,10 @@ import { Spinner } from '../../components/ui';
 const UserDetail: FC = () => {
   const params = useParams<{ id: string }>();
   const { getSingleUser } = useAction();
-  const { user } = useTypedSelector((state) => state.userDetails);
+  const {
+    userDetail: { user },
+    ui: { loading },
+  } = useTypedSelector((state) => state);
 
   console.log(user);
 
@@ -17,7 +20,7 @@ const UserDetail: FC = () => {
     getSingleUser(params.id!);
   }, [params.id]);
 
-  // if (loading) return <Spinner />;
+  if (loading) return <Spinner />;
 
   return (
     <>

@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { Dispatch } from '@reduxjs/toolkit';
-import { ClearUsersAction, GithubsAction } from '../actions/githubsActions';
+import { ClearUsersAction } from '../actions/githubsActions';
 import { ActionType } from '../actionTypes';
 import { User } from '../../interfaces/User';
+import { Action } from '../actions';
 
 export const searchUsers =
-  (text: string) => async (dispatch: Dispatch<GithubsAction>) => {
-    dispatch({ type: ActionType.FETCH_USERS });
+  (text: string) => async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.FETCH_START });
 
     const params = new URLSearchParams({ q: text });
 
@@ -20,11 +21,12 @@ export const searchUsers =
         }
       );
 
-      dispatch({ type: ActionType.FETCH_USERS_COMPLETE, payload: data.items });
+      dispatch({ type: ActionType.FETCH_USERS, payload: data.items });
+      dispatch({ type: ActionType.FETCH_END });
     } catch (err: any) {
       console.log(err);
 
-      dispatch({ type: ActionType.FETCH_USERS_ERROR, payload: err.message });
+      dispatch({ type: ActionType.FETCH_ERROR, payload: err.message });
     }
   };
 

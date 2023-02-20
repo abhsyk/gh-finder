@@ -6,7 +6,10 @@ import UserItem from '../UserItem';
 
 const UserList: FC = () => {
   // const { fetchUsers } = useAction();
-  const { users, loading } = useTypedSelector((state) => state.githubs);
+  const {
+    githubs: { users },
+    ui: { loading },
+  } = useTypedSelector((state) => state);
 
   // useEffect(() => {
   //   fetchUsers();
