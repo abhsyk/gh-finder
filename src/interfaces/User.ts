@@ -15,6 +15,9 @@ export interface User {
   site_admin: boolean;
   starred_url: string;
   subscriptions_url: string;
+  name: string;
+  hireable: boolean;
+  bio: string;
   type: 'User' | 'Admin';
   url: string;
 }
