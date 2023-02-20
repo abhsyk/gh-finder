@@ -18,7 +18,8 @@ const UserDetail: FC = () => {
   useEffect(() => {
     getSingleUser(params.id!);
     getUserRepos(params.id!);
-  }, [params.id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) return <Spinner />;
 
@@ -46,11 +47,11 @@ const UserDetail: FC = () => {
               <div className="col-span-2">
                 <div className="flex items-end">
                   <h1 className="text-3xl font-bold">{user.name}</h1>
-                  <div className="px-4 mb-1 ml-2 font-bold bg-green-700 text-green-400 rounded-2xl text-center h-fit">
+                  <div className="px-4 mb-1 ml-2 font-bold bg-green-600 text-green-300 bg-opacity-30 rounded-2xl text-center h-fit">
                     {user.type}
                   </div>
                   {user.hireable && (
-                    <div className="px-4 mb-1 ml-2 font-bold bg-sky-700 rounded-2xl text-sky-400 h-fit">
+                    <div className="px-4 mb-1 ml-2 font-bold bg-sky-600 rounded-2xl text-sky-300 bg-opacity-30 h-fit">
                       Hireble
                     </div>
                   )}
