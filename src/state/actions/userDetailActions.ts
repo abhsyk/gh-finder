@@ -1,3 +1,4 @@
+import { Repository } from '../../interfaces/Repository';
 import { User } from '../../interfaces/User';
 import { ActionType } from '../actionTypes';
 
@@ -7,7 +8,7 @@ export interface GetSingleUserAction {
 }
 export interface GetUserReposAction {
   type: ActionType.GET_USER_REPOS;
-  payload: any;
+  payload: Repository[];
 }
 export interface ClearOneUserAction {
   type: ActionType.CLEAR_ONE_USER;

@@ -1,10 +1,11 @@
+import { Repository } from '../../interfaces/Repository';
 import { User } from '../../interfaces/User';
 import { UserDetailAction } from '../actions/userDetailActions';
 import { ActionType } from '../actionTypes';
 
 interface UserDetailState {
   user: User | null;
-  repos: any[];
+  repos: Repository[];
 }
 
 const initialState = {
@@ -21,6 +22,8 @@ const reducer = (
       return { ...state, user: action.payload, loading: false };
     case ActionType.CLEAR_ONE_USER:
       return { ...state, user: null };
+    case ActionType.GET_USER_REPOS:
+      return { ...state, repos: action.payload };
     default:
       return state;
   }

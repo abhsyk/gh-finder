@@ -5,19 +5,19 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Spinner } from '../../components/ui';
+import { RepoList } from '../../components/repos';
 
 const UserDetail: FC = () => {
   const params = useParams<{ id: string }>();
-  const { getSingleUser } = useAction();
+  const { getSingleUser, getUserRepos } = useAction();
   const {
-    userDetail: { user },
+    userDetail: { user, repos },
     ui: { loading },
   } = useTypedSelector((state) => state);
 
-  console.log(user);
-
   useEffect(() => {
     getSingleUser(params.id!);
+    getUserRepos(params.id!);
   }, [params.id]);
 
   if (loading) return <Spinner />;
@@ -163,6 +163,7 @@ const UserDetail: FC = () => {
                 </div>
               </div>
             </div>
+            <RepoList repos={repos} />
           </div>
         </div>
       )}
