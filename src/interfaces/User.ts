@@ -18,6 +18,13 @@ export interface User {
   name: string;
   hireable: boolean;
   bio: string;
+  location: string;
+  blog: string;
+  twitter_username: string;
+  followers: number;
+  following: number;
+  public_repos: number;
+  public_gists: number;
   type: 'User' | 'Admin';
   url: string;
 }
